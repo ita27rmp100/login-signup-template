@@ -11,6 +11,77 @@ const usersRouter = require('./routes/users');
 
 const app = express();
 
+// express session
+app.use(session({
+  secret: 'your_secret_key',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}));
+// DB connection
+let connection = mysql.createConnection({
+  password:"",
+  user:"root",
+  host:"127.0.0.1",
+  database:"template_db"
+}) 
+/ login & signup
+  // SignUp
+app.post('/logsign/signup',(req,res)=>{
+  let body = ''
+  req.on('data',(data)=>{
+      body = body + data
+  })
+  req.on('end',()=>{
+      let result = qs.parse(body)
+      connection.query(`select * from users where username = '${result.username}'`,(error,results,fields)=>{
+        if(results == undefined && result.password_sign==result.ConfirmPassword){
+          connection.query(`
+            insert into users()
+            value('${result.username_sign}','${result.password_sign}','${result.start_day.replaceAll("-",'/')}','0 Days',1)`,
+            (error,RES,fields)=>{
+              req.session.login = true
+              req.session.username = result.username_sign
+              res.redirect('/')
+            }
+          )
+        }
+        else{
+          res.send("Error")
+        }
+      })
+  })
+})
+  // log in
+app.post('/logsign/login',(req,res)=>{
+  let body = ''
+  req.on('data',(data)=>{
+    body = body + data
+  })
+  req.on('end',()=>{
+    let result = qs.parse(body)
+    connection.query(
+      `select * from users where username='${result.username_login}'`,
+      (err,results,fields)=>{
+        if(results != undefined && results[0].password == result.password_login){
+          req.session.login = true
+          req.session.username = result.username_login
+          res.redirect('/')
+        }
+        else{
+          if(results == undefined) res.send("ERROR: username doesn't exit")
+          else res.send("passowrd is wrong")
+        }
+      }
+    )
+  }
+  )
+})
+  // log out
+app.post('/logsign',(req,res)=>{
+  req.session.login = false
+  res.redirect('/logsign')
+})
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
