@@ -39,7 +39,7 @@
                             <small class="text-muted text-right">You have not an account ? <a onclick="toogleMood()" href="#">sign up</a></small>
                         </div>
                         <div class="card-footer justify-content-center log">
-                            <input type="submit" value="Log in" class="btn btn-success text-light">
+                            <input type="submit" value="Log in" class="btn btn-success text-light" onclick="VerifyLogIn()">
                         </div>
                         <!--sign-up-->
                         <div class="card-body sign">
@@ -61,16 +61,10 @@
                                 </div>
                                 <input type="password" id="cpw" minlength="6" name="ConfirmPassword" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
                             </div>
-                            <div class="input-group mb-1">
-                                <div class="input-group-prepend InputTitle">
-                                  <span class="input-group-text" id="inputGroup-sizing-default">Start Date &nbsp;</span>
-                                </div>
-                                <input type="date" id="cpw" minlength="6" name="start_day" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
-                            </div>
                             <small class="text-muted text-right">You already have an account ? <a  onclick="toogleMood()" href="#">Log in</a></small>
                         </div>
                         <div class="card-footer justify-content-center sign">
-                            <input type="submit" id="btnSubmit" value="sign up" class="btn btn-success text-light">
+                            <input type="submit" id="btnSubmit" value="sign up" class="btn btn-success text-light" onclick="VerifySignUp()">
                         </div>
                     </form>
                 </div>
