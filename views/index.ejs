@@ -10,14 +10,10 @@
         <section class="navbar-brand mb-0 h1 text-danger">Template | home</section>
     </nav>
     <!-- logout-button -->
-    <nav class="container p-0">
-        <div class="card">
-            <div class="card-footer d-flex flex-row justify-content-right">
-                <form action="/" method="post">
-                    <input type="submit" value="Again" class="btn btn-dark">
-                </form>
-            </div>
-        </div>
+    <nav class="container p-0 d-flex justify-content-center align-items-center" style="height:80vh">
+        <form action="/logsign" method="post">
+            <input type="submit" value="Log Out" class="btn btn-danger">
+        </form>
     </nav>
     <!-- scripts -->
     <%- include('./master/scripts.ejs') %>

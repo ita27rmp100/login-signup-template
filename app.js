@@ -63,17 +63,16 @@ app.post('/logsign/login',(req,res)=>{
   })
   req.on('end',()=>{
     let result = qs.parse(body)
-    console.log(result)
     connection.query(
       `select * from users where username='${result.username_login}'`,
       (err,results,fields)=>{
-        if(results != undefined && results[0].password == result.password_login){
+        if(Array.isArray(results) && results.length > 0 && results[0].password == result.password_login){
           req.session.login = true
           req.session.username = result.username_login
           res.redirect('/')
         }
         else{
-          if(results == undefined) res.json({message:"non-username"})
+          if(!Array.isArray(results) || results.length === 0) res.json({message:"non-username"})
           else res.json({message:"wrong-password"})
         }
       }
