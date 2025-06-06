@@ -17,7 +17,7 @@ function toogleMood(){
     $(`#${moods[1-indexMode]}`).addClass('btn-light').removeClass('btn-dark')
     // replaced one
     $(`#${moods[indexMode]}`).addClass('btn-dark').removeClass('btn-light')
-    document.title = `NoFap | ${moods[indexMode].toUpperCase()}`
+    document.title = `Template | ${moods[indexMode].toUpperCase()}`
 }
 htmlForm()
 // Verify Login/signup 
