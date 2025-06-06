@@ -8,6 +8,7 @@ const session = require("express-session")
 // routes
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const { json } = require('stream/consumers');
 
 const app = express();
 
@@ -47,7 +48,7 @@ app.post('/logsign/signup',(req,res)=>{
           )
         }
         else{
-          res.send("Error")
+            res.json({ message: "signup_failed" });
         }
       })
   })
@@ -69,8 +70,8 @@ app.post('/logsign/login',(req,res)=>{
           res.redirect('/')
         }
         else{
-          if(results == undefined) res.send("ERROR: username doesn't exit")
-          else res.send("passowrd is wrong")
+          if(results == undefined) res.json({message:"non-username"})
+          else res.json({message:"wrong-password"})
         }
       }
     )
