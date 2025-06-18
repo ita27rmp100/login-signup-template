@@ -10,7 +10,6 @@ A Login-Signup template built with NodeJS and MySQL.
 
 ![Express](https://img.shields.io/badge/Express-000000.svg?style=flat&logo=Express&logoColor=white)
 ![JSON](https://img.shields.io/badge/JSON-000000.svg?style=flat&logo=JSON&logoColor=white)
-![Markdown](https://img.shields.io/badge/Markdown-000000.svg?style=flat&logo=Markdown&logoColor=white)
 ![npm](https://img.shields.io/badge/npm-CB3837.svg?style=flat&logo=npm&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat&logo=JavaScript&logoColor=black)
 ![EJS](https://img.shields.io/badge/EJS-B4CA65.svg?style=flat&logo=EJS&logoColor=black)
