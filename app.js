@@ -9,13 +9,12 @@ const qs = require("querystring")
 // routes
 const indexRouter = require('./routes/index');
 const LoginSignup = require('./routes/login_signup');
-const { json } = require('stream/consumers');
 
 const app = express();
 
 // express session
 app.use(session({
-  secret: 'your_secret_key',
+  secret: '8b741f6',
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false }
